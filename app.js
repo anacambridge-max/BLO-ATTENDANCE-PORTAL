@@ -1,4 +1,4 @@
-const API_URL="";let master=[],current=null,gps=null,photoData=null,reportRows=[];
+const API_URL="https://script.google.com/macros/s/AKfycby4tNIgZnK1AccryooQjIDRWz35lgQMtNtoxalQRcCwlBfh_I30GJ3ZtxoqhLAYN1mi/exec";let master=[],current=null,gps=null,photoData=null,reportRows=[];
 const $=id=>document.getElementById(id),today=()=>new Date().toISOString().slice(0,10);
 const fmtTime=iso=>iso?new Date(iso).toLocaleString("en-IN",{dateStyle:"short",timeStyle:"short"}):"—";
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
