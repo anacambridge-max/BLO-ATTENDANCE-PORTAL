@@ -1,23 +1,29 @@
-# AC-34 Matiala — BLO Attendance Portal
+# AC-34 Matiala — 430 BLO Attendance Portal
 
-Fresh Supabase-free attendance portal for 430 BLOs.
+Fresh Supabase-free source built from `For Hearing Schedule-3.xlsx`.
 
-## Features
-- BLO login by Part/PS No. + registered mobile
-- Present / Absent attendance
-- Current GPS capture with accuracy
-- Field-working photo from device camera
+**430 PS/BLO records extracted from Rough Data.**
+
+### Features
+- BLO login by Part No + registered mobile
+- Present / Absent
+- High-accuracy GPS capture
+- Camera photo capture
 - Submission timestamp
 - Officer/date dashboard
-- Total / Present / Absent / Pending counts
+- Total / Present / Absent / Pending
 - GPS map links and photo links
 - CSV export
-- One production URL can be shared with all 430 BLOs
 
-## Data
-The portal is based on the uploaded `For Hearing Schedule-3.xlsx` and contains the AC-34 Matiala 430 PS/BLO master mapping.
+### Shared backend without Supabase
+The included `Code.gs` uses **Google Sheets + Google Drive**:
+1. Create a blank Google Sheet.
+2. Extensions → Apps Script → paste `Code.gs`.
+3. Run `setup()` once and authorize.
+4. Deploy as Web app → Execute as Me → Who has access: Anyone.
+5. Put the Web App URL into `API_URL` in `app.js`.
+6. Deploy these static files to Vercel.
 
-## Shared backend
-The repository is frontend-first. For central shared attendance, the included design uses Google Apps Script + Google Sheets + Google Drive instead of Supabase. Set `API_URL` in `app.js` to the deployed Apps Script Web App URL.
+This lets all 430 BLOs use one public production URL; attendance/photos are stored centrally in the Google account.
 
-For official production use, move the master-data lookup/authentication behind the backend so mobile numbers are not publicly downloadable from the frontend.
+**Security note:** this first build embeds master data in the frontend for simple setup. Before official production, move BLO authentication/master lookup into the Apps Script backend so registered mobile numbers are not publicly downloadable, and add a separate protected officer login.
